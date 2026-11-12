@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#07152d">
+  <meta name="description" content="بطاقة الزيارة الرقمية — TS-GSM TECHNOLOGIE | أ. صلاح الدين بن لخضر">
+  <title>TS-GSM TECHNOLOGIE — بطاقة الزيارة</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    :root{
+      --navy:#07152d;--navy2:#102b55;--blue:#2563eb;--cyan:#10bde5;--gold:#f59e0b;
+      --ink:#15233b;--muted:#64748b;--line:#e8edf4;--surface:#fff;--soft:#f6f8fc;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;min-height:100vh;color:var(--ink);line-height:1.6;
+      font-family:"Cairo",system-ui,sans-serif;
+      display:flex;align-items:center;justify-content:center;padding:22px 14px;
+      background:
+        radial-gradient(circle at 12% 15%,rgba(16,189,229,.28),transparent 40%),
+        radial-gradient(circle at 88% 90%,rgba(245,158,11,.14),transparent 45%),
+        linear-gradient(150deg,var(--navy),var(--navy2));
+    }
+    button,a{font:inherit}
+    button{cursor:pointer}
+    :focus-visible{outline:3px solid rgba(37,99,235,.4);outline-offset:3px}
+
+    .card{
+      width:min(100%,410px);overflow:hidden;background:#fff;
+      border-radius:28px;box-shadow:0 26px 70px rgba(7,21,45,.4);
+    }
+
+    /* ===== الهيدر ===== */
+    .hero{position:relative;text-align:center;padding:32px 24px 26px;
+      background:linear-gradient(160deg,#fff 20%,#f4f8ff);border-bottom:1px solid var(--line)}
+    .hero::after{content:"";position:absolute;left:0;right:0;top:0;height:5px;
+      background:linear-gradient(90deg,var(--cyan),var(--blue),var(--gold))}
+
+    /* ===== مبدّل اللغة ===== */
+    .lang{position:absolute;top:14px;inset-inline-start:14px;display:inline-flex;
+      gap:2px;padding:3px;background:#fff;border:1px solid var(--line);
+      border-radius:999px;box-shadow:0 4px 12px rgba(7,21,45,.08);z-index:2}
+    .lang button{border:0;background:transparent;color:var(--muted);
+      font-size:.72rem;font-weight:800;padding:5px 9px;border-radius:999px;
+      line-height:1;transition:background .2s ease,color .2s ease}
+    .lang button.active{background:var(--blue);color:#fff}
+
+    .logos{display:flex;justify-content:center;align-items:center;margin-bottom:16px}
+    .logo{width:94px;height:94px;object-fit:cover;border-radius:50%;background:#fff;
+      border:4px solid #fff;box-shadow:0 7px 24px rgba(15,41,78,.15)}
+    .logo+.logo{margin-right:-12px}
+    .hero h1{margin:0;color:var(--navy);font-size:1.5rem;font-weight:800;letter-spacing:.01em}
+    .hero .role{margin:7px 0 0;font-size:.95rem;font-weight:700;color:var(--blue)}
+    .hero .tag{margin:4px 0 0;font-size:.78rem;font-weight:700;color:#94a3b8;letter-spacing:.04em}
+
+    .body{padding:22px 20px 24px}
+
+    /* ===== أزرار الاتصال الرئيسية ===== */
+    .primary{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+    .big{display:flex;align-items:center;justify-content:center;gap:9px;
+      min-height:54px;border-radius:16px;text-decoration:none;color:#fff;
+      font-size:.95rem;font-weight:800;border:0;
+      transition:transform .22s ease,box-shadow .22s ease}
+    .big i{font-size:1.15rem}
+    .big:hover{transform:translateY(-3px)}
+    .call{background:linear-gradient(135deg,#2563eb,#1749bd);box-shadow:0 10px 22px rgba(37,99,235,.3)}
+    .wa{background:linear-gradient(135deg,#25D366,#128C47);box-shadow:0 10px 22px rgba(18,140,71,.3)}
+
+    /* ===== أدوات (حفظ + QR) ===== */
+    .tools{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-top:11px}
+    .tool{display:flex;align-items:center;justify-content:center;gap:9px;
+      min-height:50px;border-radius:16px;font-size:.9rem;font-weight:800;
+      border:1px solid var(--line);background:var(--soft);color:var(--navy);
+      transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease}
+    .tool i{font-size:1.05rem;color:var(--blue)}
+    .tool:hover{transform:translateY(-3px);border-color:#9cc3f3;box-shadow:0 10px 22px rgba(15,41,78,.1)}
+
+    /* ===== الفاصل ===== */
+    .sep{display:flex;align-items:center;gap:12px;margin:24px 2px 18px;color:#94a3b8;
+      font-size:.74rem;font-weight:800;letter-spacing:.06em}
+    .sep::before,.sep::after{content:"";height:1px;flex:1;background:var(--line)}
+
+    /* ===== منصات التواصل ===== */
+    .social{display:grid;grid-template-columns:repeat(3,1fr);gap:11px}
+    .s{display:flex;flex-direction:column;align-items:center;gap:7px;
+      padding:14px 6px;border-radius:16px;text-decoration:none;
+      background:var(--soft);border:1px solid var(--line);
+      color:var(--ink);font-size:.74rem;font-weight:700;
+      transition:transform .22s ease,box-shadow .22s ease,color .22s ease}
+    .s i{font-size:1.5rem;transition:transform .22s ease}
+    .s:hover{transform:translateY(-4px);box-shadow:0 12px 24px rgba(7,21,45,.12)}
+    .s:hover i{transform:scale(1.12)}
+    .s.website:hover{color:#0072ff}  .s.website i{color:#0072ff}
+    .s.facebook:hover{color:#1877F2} .s.facebook i{color:#1877F2}
+    .s.instagram:hover{color:#E4405F}.s.instagram i{color:#E4405F}
+    .s.youtube:hover{color:#FF0000} .s.youtube i{color:#FF0000}
+    .s.tiktok:hover{color:#010101}  .s.tiktok i{color:#010101}
+    .s.telegram:hover{color:#229ED9}.s.telegram i{color:#229ED9}
+    .s.map:hover{color:#EA4335}     .s.map i{color:#EA4335}
+
+    footer{text-align:center;padding:16px 10px 20px;color:#9fb0c6;
+      font-size:.7rem;font-weight:700;background:var(--soft);border-top:1px solid var(--line)}
+
+    /* ===== النافذة المنبثقة (QR) ===== */
+    .modal{position:fixed;inset:0;z-index:30;display:none;align-items:center;justify-content:center;
+      padding:18px;background:rgba(4,12,28,.72);backdrop-filter:blur(5px)}
+    .modal.open{display:flex;animation:fade .18s ease}
+    .dialog{width:min(100%,360px);padding:26px 24px 28px;background:#fff;border-radius:24px;
+      text-align:center;box-shadow:0 24px 70px rgba(0,0,0,.4);animation:rise .22s ease}
+    .dialog h3{margin:0 0 4px;color:var(--navy);font-size:1.1rem}
+    .dialog p{margin:0;color:var(--muted);font-size:.82rem;font-weight:600}
+    .qr-box{width:220px;max-width:100%;margin:18px auto 14px;padding:14px;background:#fff;
+      border:1px solid var(--line);border-radius:18px;box-shadow:0 8px 20px rgba(7,21,45,.08)}
+    .qr-box img{display:block;width:100%;height:auto;border-radius:6px}
+    .qr-url{direction:ltr;word-break:break-all;color:var(--blue);font-size:.78rem;font-weight:700}
+    .close{margin-top:16px;width:100%;min-height:46px;border:0;border-radius:14px;
+      background:var(--navy);color:#fff;font-weight:800;font-size:.9rem}
+    @keyframes fade{from{opacity:0}to{opacity:1}}
+    @keyframes rise{from{transform:translateY(18px);opacity:.6}to{transform:none;opacity:1}}
+
+    @media(max-width:360px){.logo{width:82px;height:82px}.hero h1{font-size:1.3rem}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+  </style>
+</head>
+<body>
+  <main class="card">
+    <header class="hero">
+      <!-- مبدّل اللغة -->
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="ar">ع</button>
+        <button type="button" data-lang="fr">FR</button>
+        <button type="button" data-lang="en">EN</button>
+      </div>
+
+      <div class="logos">
+        <img class="logo" src="center-logo.png" alt="TS-GSM">
+        <img class="logo" src="prof-logo.png" alt="Salah Eddine">
+      </div>
+      <h1>TS-GSM TECHNOLOGIE</h1>
+      <p class="role" data-i18n="role">أ. صلاح الدين بن لخضر</p>
+      <p class="tag" data-i18n="tag">CENTRE DZ PRO · الجزائر</p>
+    </header>
+
+    <div class="body">
+      <!-- اتصال + واتساب -->
+      <div class="primary">
+        <a class="big call" href="tel:+213797099620"><i class="fas fa-phone"></i> <span data-i18n="call">اتصال</span></a>
+        <a class="big wa" href="https://wa.me/213797099620" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> <span data-i18n="wa">واتساب</span></a>
+      </div>
+
+      <!-- حفظ جهة الاتصال + QR -->
+      <div class="tools">
+        <button class="tool" id="saveBtn"><i class="fas fa-user-plus"></i> <span data-i18n="save">حفظ جهة الاتصال</span></button>
+        <button class="tool" id="qrBtn"><i class="fas fa-qrcode"></i> <span data-i18n="qr">رمز QR</span></button>
+      </div>
+
+      <div class="sep"><span data-i18n="socialSep">منصات التواصل</span></div>
+
+      <!-- المنصات -->
+      <div class="social">
+        <a class="s website"   href="https://ts-gsm.dz/" target="_blank" rel="noopener"><i class="fas fa-globe"></i><span data-i18n="s_website">الموقع</span></a>
+        <a class="s facebook"  href="https://www.facebook.com/share/16dfB8DsA6/" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i><span data-i18n="s_facebook">فيسبوك</span></a>
+        <a class="s instagram" href="https://www.instagram.com/ts_gsm/" target="_blank" rel="noopener"><i class="fab fa-instagram"></i><span data-i18n="s_instagram">إنستغرام</span></a>
+        <a class="s youtube"   href="https://youtube.com/@tsgsm" target="_blank" rel="noopener"><i class="fab fa-youtube"></i><span data-i18n="s_youtube">يوتيوب</span></a>
+        <a class="s tiktok"    href="https://www.tiktok.com/@tsgsmtechnologie" target="_blank" rel="noopener"><i class="fab fa-tiktok"></i><span data-i18n="s_tiktok">تيك توك</span></a>
+        <a class="s telegram"  href="https://t.me/TSGSM89" target="_blank" rel="noopener"><i class="fab fa-telegram"></i><span data-i18n="s_telegram">تيليجرام</span></a>
+        <a class="s map"       href="https://maps.app.goo.gl/PsMK278hDh1UTGJw7" target="_blank" rel="noopener"><i class="fas fa-location-dot"></i><span data-i18n="s_map">الموقع الجغرافي</span></a>
+      </div>
+    </div>
+
+    <footer><span data-i18n="footer">© 2026 TS-GSM TECHNOLOGIE — CENTRE DZ PRO</span></footer>
+  </main>
+
+  <!-- نافذة QR -->
+  <div class="modal" id="qrModal" role="dialog" aria-modal="true" aria-labelledby="qrTitle">
+    <div class="dialog">
+      <h3 id="qrTitle" data-i18n="qrTitle">رمز QR للبطاقة</h3>
+      <p data-i18n="qrSub">امسح الرمز بالكاميرا لفتح البطاقة</p>
+      <div class="qr-box">
+        <img src="https://quickchart.io/qr?text=https%3A%2F%2Fts-gsm-2.vercel.app&size=300&margin=1" alt="QR — TS-GSM" width="300" height="300">
+      </div>
+      <div class="qr-url">ts-gsm-2.vercel.app</div>
+      <button class="close" data-close data-i18n="close">إغلاق</button>
+    </div>
+  </div>
+
+  <script>
+    /* ===== الترجمات ===== */
+    const I18N = {
+      ar:{dir:'rtl',lang:'ar',
+        role:'أ. صلاح الدين بن لخضر', tag:'CENTRE DZ PRO · الجزائر',
+        call:'اتصال', wa:'واتساب', save:'حفظ جهة الاتصال', qr:'رمز QR',
+        socialSep:'منصات التواصل',
+        s_website:'الموقع', s_facebook:'فيسبوك', s_instagram:'إنستغرام',
+        s_youtube:'يوتيوب', s_tiktok:'تيك توك', s_telegram:'تيليجرام', s_map:'الموقع الجغرافي',
+        footer:'© 2026 TS-GSM TECHNOLOGIE — CENTRE DZ PRO',
+        qrTitle:'رمز QR للبطاقة', qrSub:'امسح الرمز بالكاميرا لفتح البطاقة', close:'إغلاق'},
+      fr:{dir:'ltr',lang:'fr',
+        role:'M. Salah Eddine Ben Lakhdar', tag:'CENTRE DZ PRO · Algérie',
+        call:'Appeler', wa:'WhatsApp', save:'Enregistrer le contact', qr:'Code QR',
+        socialSep:'Réseaux sociaux',
+        s_website:'Site web', s_facebook:'Facebook', s_instagram:'Instagram',
+        s_youtube:'YouTube', s_tiktok:'TikTok', s_telegram:'Telegram', s_map:'Localisation',
+        footer:'© 2026 TS-GSM TECHNOLOGIE — CENTRE DZ PRO',
+        qrTitle:'Code QR de la carte', qrSub:'Scannez le code pour ouvrir la carte', close:'Fermer'},
+      en:{dir:'ltr',lang:'en',
+        role:'Mr. Salah Eddine Ben Lakhdar', tag:'CENTRE DZ PRO · Algeria',
+        call:'Call', wa:'WhatsApp', save:'Save contact', qr:'QR code',
+        socialSep:'Social media',
+        s_website:'Website', s_facebook:'Facebook', s_instagram:'Instagram',
+        s_youtube:'YouTube', s_tiktok:'TikTok', s_telegram:'Telegram', s_map:'Location',
+        footer:'© 2026 TS-GSM TECHNOLOGIE — CENTRE DZ PRO',
+        qrTitle:'Card QR code', qrSub:'Scan the code to open the card', close:'Close'}
+    };
+
+    function applyLang(code){
+      const t = I18N[code] || I18N.ar;
+      document.documentElement.lang = t.lang;
+      document.documentElement.dir = t.dir;
+      document.querySelectorAll('[data-i18n]').forEach(el=>{
+        const key = el.getAttribute('data-i18n');
+        if(t[key] != null) el.textContent = t[key];
+      });
+      document.querySelectorAll('.lang button').forEach(b=>{
+        b.classList.toggle('active', b.dataset.lang === code);
+      });
+      try{ localStorage.setItem('tsgsm-lang', code); }catch(e){}
+    }
+
+    document.querySelectorAll('.lang button').forEach(b=>{
+      b.addEventListener('click', ()=> applyLang(b.dataset.lang));
+    });
+
+    // اللغة الافتراضية: المحفوظة أو العربية
+    let saved = 'ar';
+    try{ saved = localStorage.getItem('tsgsm-lang') || 'ar'; }catch(e){}
+    applyLang(I18N[saved] ? saved : 'ar');
+
+    /* ===== حفظ جهة الاتصال (vCard) ===== */
+    document.getElementById('saveBtn').addEventListener('click',()=>{
+      const v=[
+        'BEGIN:VCARD','VERSION:3.0',
+        'FN:صلاح الدين بن لخضر (TS-GSM)',
+        'N:بن لخضر;صلاح الدين;;;',
+        'ORG:TS-GSM TECHNOLOGIE CENTRE DZ PRO',
+        'TITLE:مدير ومكوّن',
+        'TEL;TYPE=CELL,VOICE:+213797099620',
+        'URL:https://ts-gsm.dz',
+        'X-SOCIALPROFILE;TYPE=facebook:https://www.facebook.com/share/16dfB8DsA6/',
+        'X-SOCIALPROFILE;TYPE=instagram:https://www.instagram.com/ts_gsm/',
+        'X-SOCIALPROFILE;TYPE=tiktok:https://www.tiktok.com/@tsgsmtechnologie',
+        'NOTE:Map: https://maps.app.goo.gl/PsMK278hDh1UTGJw7',
+        'END:VCARD'
+      ].join('\r\n');
+      const blob=new Blob([v],{type:'text/vcard;charset=utf-8'});
+      const url=URL.createObjectURL(blob);
+      const a=document.createElement('a');
+      a.href=url;a.download='TS-GSM.vcf';a.click();
+      setTimeout(()=>URL.revokeObjectURL(url),1200);
+    });
+
+    /* ===== نافذة QR ===== */
+    const qrModal=document.getElementById('qrModal');
+    document.getElementById('qrBtn').addEventListener('click',()=>qrModal.classList.add('open'));
+    document.addEventListener('click',e=>{
+      if(e.target.matches('[data-close]')||e.target===qrModal) qrModal.classList.remove('open');
+    });
+    document.addEventListener('keydown',e=>{if(e.key==='Escape')qrModal.classList.remove('open')});
+  </script>
+</body>
+</html>
